@@ -1,5 +1,3 @@
-
-
 /* Robot font */
 @include font-family("Roboto", 900, normal, "/fonts/roboto/", "roboto-black");
 @include font-family("Roboto", 900, italic, "/fonts/roboto/", "roboto-blackitalic");
@@ -13,6 +11,3 @@
 @include font-family("Roboto", 300, italic, "/fonts/roboto/", "roboto-lightitalic");
 @include font-family("Roboto", 100, normal, "/fonts/roboto/", "roboto-thin");
 @include font-family("Roboto", 100, italic, "/fonts/roboto/", "roboto-thinitalic");
-
-/* Awesome font */
-@include font-family('FontAwesome', normal, normal, '/fonts/font-awesome/', 'fontawesome-webfont');

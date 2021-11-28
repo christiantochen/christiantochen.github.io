@@ -1,12 +1,14 @@
 {
-  "private": true,
+  "name": "christiantochen.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "export": "next export"
   },
   "dependencies": {
+    "bootstrap": "^5.1.3",
     "next": "latest",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -14,7 +16,10 @@
   },
   "devDependencies": {
     "@types/node": "^16.11.9",
-    "@types/react": "^17.0.36",
+    "@types/react": "17.0.36",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.4",
+    "prettier": "^2.4.1",
     "sass": "^1.43.4",
     "typescript": "^4.5.2"
   },

@@ -8,6 +8,9 @@
  */
 
 @import "mixins";
-@import "_global/reset";
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "_global/fonts";
-@import "_global/typography";
+
+body {
+  @include roboto-regular;
+}
