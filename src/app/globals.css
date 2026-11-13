@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (@media (prefers-color-scheme: dark));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
   --radius: 0.625rem;
   --background: #fbf8f3;
   --foreground: #27221d;
-  --card: #fbf8f3;
+  --card: #ffffff;
   --card-foreground: #27221d;
   --popover: #fbf8f3;
   --popover-foreground: #27221d;
@@ -25,13 +25,40 @@
   --input: #e6ded3;
   --ring: #27221d;
   --body: #4a4239;
+  --fog-a: rgba(176, 190, 205, 0.3);
+  --fog-b: rgba(154, 58, 14, 0.07);
+  /* Colors of the Fogtrail preview, taken from the Fogtrail app's own themes. */
+  --ft-sidebar: #f1f4f7;
+  --ft-main: #fafbfc;
+  --ft-border: #d8dee5;
+  --ft-ink: #18212b;
+  --ft-muted: #5b6875;
+  --ft-selected: #fbe7b5;
+  --ft-selected-ink: #18212b;
+  --ft-key: #2b5f8a;
+  --ft-num: #9a6700;
+  --ft-green: #2e8b6b;
 }
 
+/* Dark theme. The script in layout.tsx sets data-theme before first paint (saved choice, else system).
+   Without JavaScript, the media query below still follows the system setting. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background: #141210;
     --foreground: #f2ede6;
-    --card: #141210;
+    --card: #1b1815;
+    --fog-a: rgba(120, 135, 150, 0.2);
+    --fog-b: rgba(232, 149, 106, 0.06);
+    --ft-sidebar: #151b21;
+    --ft-main: #1a2128;
+    --ft-border: #2b363f;
+    --ft-ink: #e6ebf0;
+    --ft-muted: #94a1ae;
+    --ft-selected: #3b3013;
+    --ft-selected-ink: #ffe7a8;
+    --ft-key: #9cc4e4;
+    --ft-num: #f2b33d;
+    --ft-green: #5fc3a0;
     --card-foreground: #f2ede6;
     --popover: #141210;
     --popover-foreground: #f2ede6;
@@ -52,9 +79,47 @@
   }
 }
 
+:root[data-theme="dark"] {
+  --background: #141210;
+  --foreground: #f2ede6;
+  --card: #1b1815;
+  --fog-a: rgba(120, 135, 150, 0.2);
+  --fog-b: rgba(232, 149, 106, 0.06);
+  --ft-sidebar: #151b21;
+  --ft-main: #1a2128;
+  --ft-border: #2b363f;
+  --ft-ink: #e6ebf0;
+  --ft-muted: #94a1ae;
+  --ft-selected: #3b3013;
+  --ft-selected-ink: #ffe7a8;
+  --ft-key: #9cc4e4;
+  --ft-num: #f2b33d;
+  --ft-green: #5fc3a0;
+  --card-foreground: #f2ede6;
+  --popover: #141210;
+  --popover-foreground: #f2ede6;
+  --primary: #f2ede6;
+  --primary-foreground: #141210;
+  --primary-hover: color-mix(in oklab, var(--primary) 88%, black);
+  --secondary: #24201c;
+  --secondary-foreground: #f2ede6;
+  --muted: #24201c;
+  --muted-foreground: #b3a89b;
+  --accent: #e8956a;
+  --accent-foreground: #141210;
+  --destructive: #f97066;
+  --border: #2e2924;
+  --input: #2e2924;
+  --ring: #f2ede6;
+  --body: #d6cdc2;
+}
+
 @theme inline {
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-mono:
+    var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-app: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -88,7 +153,17 @@
   html {
     color-scheme: light dark;
   }
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
   body {
     @apply bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(60% 45% at 12% 0%, var(--fog-a), transparent 70%),
+      radial-gradient(45% 40% at 92% 100%, var(--fog-b), transparent 70%);
+    background-attachment: fixed;
   }
 }

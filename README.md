@@ -1,6 +1,6 @@
 # christiantochen.com
 
-Personal site for Christianto Chen. A single-page Next.js (App Router) site styled with Tailwind CSS and shadcn/ui, exported as static HTML and hosted on GitHub Pages.
+Personal site for Kristianto Chen. A single-page Next.js (App Router) site styled with Tailwind CSS and shadcn/ui, exported as static HTML and hosted on GitHub Pages.
 
 ## Local development
 
@@ -19,9 +19,11 @@ Other scripts:
 
 ## Project layout
 
-- `src/app/layout.tsx`: root layout, fonts (Newsreader + Figtree via `next/font`) and metadata
+- `src/app/layout.tsx`: root layout, fonts (Newsreader, Figtree, IBM Plex Sans and Mono via `next/font`), metadata, and the script that sets the theme before first paint
 - `src/app/page.tsx`: the page
-- `src/app/globals.css`: Tailwind and the design tokens (light/dark follow the system setting)
+- `src/app/globals.css`: Tailwind and the design tokens (light/dark follow the system setting until the visitor picks one with the toggle; the choice is saved in `localStorage`)
+- `src/components/theme-toggle.tsx`: the light/dark button
+- `src/components/previews.tsx`: the small previews on the "Things I've made" cards
 - `src/components/ui/button.tsx`: shadcn/ui Button (add more with `npx shadcn@latest add <component>`)
 - `public/CNAME`: custom domain for GitHub Pages
 
